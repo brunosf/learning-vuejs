@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ contador }}</h1>
+      <div class="button">
+        <button v-on:click="add">+1</button>
+        <button @click="contador--">-1</button>
+      </div>
+
+      <input type="text" @keyup.enter="alerta" />
+
+      <h1 @mousemove="atualizaCoords">
+        Coordenadas: {{ coords.x }} - {{ coords.y }}
+        <span @mousemove.stop>AQUI NAO</span>
+      </h1>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          contador: 0,
+          coords: {
+            x: 0,
+            y: 0
+          }
+        },
+        methods: {
+          add() {
+            return this.contador++;
+          },
+          alerta() {
+            alert("Clicou na tecla ENTER");
+          },
+          atualizaCoords(e) {
+            this.coords.x = e.clientX;
+            this.coords.y = e.clientY;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

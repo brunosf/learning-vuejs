@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <a href="{{ link }}">URL passada diretamente</a> <br />
+      <a v-bind:href="link">URL passada com diretiva v-bind</a> <br />
+      <a :href="link">URL passada com diretiva v-bind reduzido :href</a> <br />
+      <h1>Usando diretiva v-model para Two way data binding</h1>
+      <input type="text" v-model="nome" /> <br />
+      <h2>{{ nome }}</h2>
+      <div id="mudou"></div>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          nome: "Bruno",
+          link: "https://www.brunoferreira.dev/"
+        },
+        watch: {
+          nome(novoNome) {
+            console.log("Mudou: ", novoNome);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
